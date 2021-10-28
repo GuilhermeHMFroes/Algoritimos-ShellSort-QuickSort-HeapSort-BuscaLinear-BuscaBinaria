@@ -6,6 +6,9 @@
 //================================	FUNCAO Shell Sort	==================================
 
 void shellsort(int tam){
+	
+	//Complexidade: Melhor Caso{ f(n) = O(n log n) }, Pior Caso{ f(n) = O(n^2) }
+	
 	printf("> Shell Sort");
 	
 	//==================================================================
@@ -113,6 +116,9 @@ void qesqdir(int vet[], int esq, int dir){
 	}
 
 void quicksort(int tam){
+	
+	//Complexidade: Melhor Caso{ f(n) = O(n log n) }, Pior Caso{ f(n) = O(n^2) }
+	
 	printf("> Quick Sort");
 	
 	//==================================================================
@@ -181,6 +187,9 @@ void aplicarHeap(int vet[], int tam, int i){
 	}
 
 void heapsort(int tam){
+	
+	//Complexidade: f(n) = O(n log n)
+	
 	printf("> Heap Sort");
 	
 	//==================================================================
@@ -233,17 +242,144 @@ void heapsort(int tam){
 	
 	}
 
+//================================	  Busca Linear	    ==================================
+
+void buscalinear(int tam){
+	
+	//Complexidade: f(x) = O(n)
+	
+	printf("> Busca Linear");
+	
+	//==================================================================
+	//							CRIAÇÃO VETOR
+	
+	int a;
+	
+	int vet[tam];
+	
+	int cont = 0;
+	do{
+		a = rand() % (tam * 10);
+		
+		if(a > 0){
+			vet[cont] = a;
+			cont++;
+			
+			}
+		
+		}while(cont < tam);
+	
+	printf("\n\t.Vetor Desordenado: [ ");
+	for(int i = 0; i < tam; i++)
+		printf("%d ", vet[i]);
+	printf("]\n");
+	
+	//==================================================================
+	//							Busca
+	
+	printf("\t. Qual número você busca: ");
+	int buscado;
+	scanf("%d", &buscado);
+	
+	int verifica = 0;
+	for(int i = 0; i <= tam - 1; i++){
+		if(vet[i] == buscado){
+			verifica = 1;
+			break;
+			
+			}
+		
+		}
+	
+	if(verifica == 1){
+		printf("\t\tNúmero encontrado");
+		
+		}else{
+			printf("\t\tNúmero não encontrado\n\n");
+			
+			}
+	
+	}
+
+//================================	  Busca Binária	    ==================================
+
+void buscabinaria(int tam){
+	
+	// Necessário Ordenação prévia do vetor
+	
+	//Complexidade: f(n) = O(log n)
+	
+	printf("> Busca Binária");
+	
+	//==================================================================
+	//							CRIAÇÃO VETOR
+	
+	int vet[tam];
+	
+	for(int i = 0; i < tam; i++){
+		vet[i] = i * 2;
+		
+		}
+	
+	printf("\n\t.Vetor Desordenado: [ ");
+	for(int i = 0; i < tam; i++)
+		printf("%d ", vet[i]);
+	printf("]\n");
+	
+	//==================================================================
+	//							Busca
+	
+	printf("\t. Qual número você busca: ");
+	int buscado;
+	scanf("%d", &buscado);
+	
+	
+	int achou = 0;
+	int inicio = 0, fim = tam - 1, meio;
+	
+	while(inicio <= fim){
+		meio = (inicio + fim) / 2;
+		
+		if(vet[meio] == buscado){
+			achou = 1;
+			break;
+			
+			}
+		
+		if(vet[meio] < buscado)
+			inicio = meio + 1;
+			
+		if(vet[meio] > buscado)
+			fim = meio - 1;
+		
+		//printf("\n%d", meio);
+		
+		
+		}
+	
+	if(achou == 1){
+		printf("\t\tNúmero encontrado");
+		
+		}else{
+			printf("\t\tNúmero não encontrado\n\n");
+			
+			}
+	
+	}
+
 //================================	FUNCAO PRINCIPAL	==================================
 
 int main(){
 
 	int tam;
-	printf("Digite o Tamanho do Vetor: ");
+	printf("Digite o tamanho do vetor: ");
 	scanf("%d", &tam);
 	printf("\n");
 	
 	shellsort(tam);
 	quicksort(tam);
 	heapsort(tam);
+	buscalinear(tam);
+	buscabinaria(tam);
 	
 	}

@@ -46,6 +46,8 @@ void shellsort(int tam){
 	while(h > 0){
 		h = (h - 1) / 3;
 		
+		//printf("\n%d", h);
+		
 		for(i = h; i < tam; i++){
 			troca = vet[i];
 			j = i;
@@ -309,7 +311,7 @@ void buscabinaria(int tam){
 	
 	//Complexidade: f(n) = O(log n)
 	
-	printf("> Busca Binária");
+	printf("\n\n> Busca Binária");
 	
 	//==================================================================
 	//							CRIAÇÃO VETOR
